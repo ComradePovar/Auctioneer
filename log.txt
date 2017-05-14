@@ -1,0 +1,47 @@
+2017-05-14 10:40:05 - Application has started.
+2017-05-14 10:40:14 - HikariPool-1 - Starting...
+2017-05-14 10:40:14 - HikariPool-1 - Driver does not support get/set network timeout for connections. (Метод org.postgresql.jdbc.PgConnection.getNetworkTimeout() ещё не реализован)
+2017-05-14 10:40:14 - HikariPool-1 - Start completed.
+2017-05-14 10:40:15 - ERROR: relation "sellers" does not exist
+  Позиция: 15
+2017-05-14 10:41:57 - Application has started.
+2017-05-14 10:42:03 - HikariPool-1 - Starting...
+2017-05-14 10:42:03 - HikariPool-1 - Driver does not support get/set network timeout for connections. (Метод org.postgresql.jdbc.PgConnection.getNetworkTimeout() ещё не реализован)
+2017-05-14 10:42:03 - HikariPool-1 - Start completed.
+2017-05-14 10:42:04 - Conversion was successful.
+2017-05-14 10:42:04 - Domain object with id = 7 was loaded.
+2017-05-14 10:42:04 - Domain objects were loaded.
+2017-05-14 10:42:22 - Application has started.
+2017-05-14 10:42:29 - HikariPool-1 - Starting...
+2017-05-14 10:42:29 - HikariPool-1 - Driver does not support get/set network timeout for connections. (Метод org.postgresql.jdbc.PgConnection.getNetworkTimeout() ещё не реализован)
+2017-05-14 10:42:29 - HikariPool-1 - Start completed.
+2017-05-14 10:42:29 - Conversion was successful.
+2017-05-14 10:42:29 - Domain object with id = 7 was loaded.
+2017-05-14 10:42:29 - Domain objects were loaded.
+2017-05-14 10:43:45 - Application has started.
+2017-05-14 10:43:49 - HikariPool-1 - Starting...
+2017-05-14 10:43:49 - HikariPool-1 - Driver does not support get/set network timeout for connections. (Метод org.postgresql.jdbc.PgConnection.getNetworkTimeout() ещё не реализован)
+2017-05-14 10:43:49 - HikariPool-1 - Start completed.
+2017-05-14 10:43:49 - Conversion was successful.
+2017-05-14 10:43:49 - Domain object with id = 7 was loaded.
+2017-05-14 10:43:49 - Domain objects were loaded.
+2017-05-14 10:44:05 - Application has started.
+2017-05-14 10:44:08 - HikariPool-1 - Starting...
+2017-05-14 10:44:09 - HikariPool-1 - Driver does not support get/set network timeout for connections. (Метод org.postgresql.jdbc.PgConnection.getNetworkTimeout() ещё не реализован)
+2017-05-14 10:44:09 - HikariPool-1 - Start completed.
+2017-05-14 10:44:09 - Conversion was successful.
+2017-05-14 10:44:09 - Domain object with id = 7 was loaded.
+2017-05-14 10:44:09 - Domain objects were loaded.
+2017-05-14 10:44:38 - Application has started.
+2017-05-14 10:44:41 - HikariPool-1 - dataSource or dataSourceClassName or jdbcUrl is required.
+2017-05-14 10:46:44 - Application has started.
+2017-05-14 10:46:47 - HikariPool-1 - Starting...
+2017-05-14 10:46:47 - HikariPool-1 - Driver does not support get/set network timeout for connections. (Метод org.postgresql.jdbc.PgConnection.getNetworkTimeout() ещё не реализован)
+2017-05-14 10:46:47 - HikariPool-1 - Start completed.
+2017-05-14 10:46:47 - Conversion was successful.
+2017-05-14 10:46:47 - Conversion was successful.
+2017-05-14 10:46:47 - Conversion was successful.
+2017-05-14 10:46:47 - Domain object with id = 7 was loaded.
+2017-05-14 10:46:47 - Domain object with id = 2 was loaded.
+2017-05-14 10:46:47 - Domain object with id = 1 was loaded.
+2017-05-14 10:46:47 - Domain objects were loaded.

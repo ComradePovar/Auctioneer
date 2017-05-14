@@ -1,0 +1,406 @@
+2017-05-10 08:34:36 - Application has started.
+2017-05-10 08:34:53 - data\Sellers\1.json (Системе не удается найти указанный путь)
+2017-05-10 08:35:51 - Value object was added.
+2017-05-10 08:35:51 - Seller with id = 1 was added to repository.
+2017-05-10 08:36:12 - Value object with id = 1 was found.
+2017-05-10 08:36:12 - Conversion was successful.
+2017-05-10 08:36:12 - Domain object with id = 1 was loaded.
+2017-05-10 08:36:17 - Value object with id = 1 was found.
+2017-05-10 08:36:17 - Conversion was successful.
+2017-05-10 08:36:17 - Domain object with id = 1 was loaded.
+2017-05-10 08:36:17 - Domain objects were loaded.
+2017-05-10 08:36:19 - Application has stopped.
+2017-05-10 18:38:49 - Application has started.
+2017-05-10 18:39:38 - HikariPool-1 - Starting...
+2017-05-10 18:45:30 - Application has started.
+2017-05-10 18:45:41 - HikariPool-1 - dataSource or dataSourceClassName or jdbcUrl is required.
+2017-05-10 18:45:57 - Application has started.
+2017-05-10 18:46:23 - HikariPool-1 - dataSource or dataSourceClassName or jdbcUrl is required.
+2017-05-10 18:47:52 - Application has started.
+2017-05-10 18:47:57 - HikariPool-1 - dataSource or dataSourceClassName or jdbcUrl is required.
+2017-05-10 18:48:39 - Application has started.
+2017-05-10 18:48:45 - HikariPool-1 - dataSource or dataSourceClassName or jdbcUrl is required.
+2017-05-10 18:50:50 - Application has started.
+2017-05-10 18:50:55 - HikariPool-1 - Starting...
+2017-05-10 18:53:22 - Application has started.
+2017-05-10 18:53:26 - HikariPool-1 - Starting...
+2017-05-10 18:55:07 - Application has started.
+2017-05-10 18:55:12 - HikariPool-1 - Starting...
+2017-05-10 19:00:34 - Application has started.
+2017-05-10 19:00:39 - HikariPool-1 - Starting...
+2017-05-10 19:02:04 - Application has started.
+2017-05-10 19:02:09 - HikariPool-1 - Starting...
+2017-05-10 19:02:19 - Application has started.
+2017-05-10 19:02:24 - HikariPool-1 - Starting...
+2017-05-10 19:12:00 - Application has started.
+2017-05-10 19:12:18 - org.postgresql.Driver
+2017-05-10 19:12:18 - HikariPool-1 - Starting...
+2017-05-10 19:15:26 - Application has started.
+2017-05-10 19:15:43 - org.postgresql.Driver
+2017-05-10 19:15:43 - HikariPool-1 - Starting...
+2017-05-10 19:16:55 - Application has started.
+2017-05-10 19:17:00 - HikariPool-1 - dataSource or dataSourceClassName or jdbcUrl is required.
+2017-05-10 19:17:36 - Application has started.
+2017-05-10 19:17:42 - HikariPool-1 - Starting...
+2017-05-10 19:18:20 - Application has started.
+2017-05-10 19:18:24 - HikariPool-1 - Starting...
+2017-05-10 19:20:32 - Application has started.
+2017-05-10 19:24:04 - HikariPool-1 - Starting...
+2017-05-10 19:26:26 - Application has started.
+2017-05-10 19:26:31 - HikariPool-1 - Starting...
+2017-05-10 19:29:13 - Application has started.
+2017-05-10 19:29:17 - HikariPool-1 - Starting...
+2017-05-10 19:29:19 - HikariPool-1 - Exception during pool initialization.
+org.postgresql.util.PSQLException: FATAL: database "null" does not exist
+	at org.postgresql.Driver$ConnectThread.getResult(Driver.java:348)
+	at org.postgresql.Driver.connect(Driver.java:271)
+	at java.sql.DriverManager.getConnection(DriverManager.java:664)
+	at java.sql.DriverManager.getConnection(DriverManager.java:247)
+	at org.postgresql.ds.common.BaseDataSource.getConnection(BaseDataSource.java:87)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:356)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:199)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:444)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:515)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:112)
+	at com.zaxxer.hikari.HikariDataSource.<init>(HikariDataSource.java:72)
+	at edu.core.java.auction.AuctionService.getDataSource(AuctionService.java:420)
+	at edu.core.java.auction.repository.database.DatabaseRepository.select(DatabaseRepository.java:16)
+	at edu.core.java.auction.repository.database.DatabaseSellerRepository.find(DatabaseSellerRepository.java:58)
+	at edu.core.java.auction.repository.database.DatabaseSellerRepository.contains(DatabaseSellerRepository.java:24)
+	at edu.core.java.auction.Main.addExistedEntity(Main.java:405)
+	at edu.core.java.auction.Main.main(Main.java:37)
+2017-05-10 19:29:38 - Application has started.
+2017-05-10 19:29:42 - HikariPool-1 - Starting...
+2017-05-10 19:29:44 - HikariPool-1 - Exception during pool initialization.
+org.postgresql.util.PSQLException: FATAL: database "null" does not exist
+	at org.postgresql.Driver$ConnectThread.getResult(Driver.java:348)
+	at org.postgresql.Driver.connect(Driver.java:271)
+	at java.sql.DriverManager.getConnection(DriverManager.java:664)
+	at java.sql.DriverManager.getConnection(DriverManager.java:247)
+	at org.postgresql.ds.common.BaseDataSource.getConnection(BaseDataSource.java:87)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:356)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:199)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:444)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:515)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:112)
+	at com.zaxxer.hikari.HikariDataSource.<init>(HikariDataSource.java:72)
+	at edu.core.java.auction.AuctionService.getDataSource(AuctionService.java:420)
+	at edu.core.java.auction.repository.database.DatabaseRepository.select(DatabaseRepository.java:16)
+	at edu.core.java.auction.repository.database.DatabaseSellerRepository.find(DatabaseSellerRepository.java:58)
+	at edu.core.java.auction.repository.database.DatabaseSellerRepository.contains(DatabaseSellerRepository.java:24)
+	at edu.core.java.auction.Main.addExistedEntity(Main.java:405)
+	at edu.core.java.auction.Main.main(Main.java:37)
+2017-05-10 19:30:16 - Application has started.
+2017-05-10 19:30:20 - HikariPool-1 - Starting...
+2017-05-10 19:30:21 - HikariPool-1 - Exception during pool initialization.
+org.postgresql.util.PSQLException: FATAL: database "null" does not exist
+	at org.postgresql.Driver$ConnectThread.getResult(Driver.java:348)
+	at org.postgresql.Driver.connect(Driver.java:271)
+	at java.sql.DriverManager.getConnection(DriverManager.java:664)
+	at java.sql.DriverManager.getConnection(DriverManager.java:247)
+	at org.postgresql.ds.common.BaseDataSource.getConnection(BaseDataSource.java:87)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:356)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:199)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:444)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:515)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:112)
+	at com.zaxxer.hikari.HikariDataSource.<init>(HikariDataSource.java:72)
+	at edu.core.java.auction.AuctionService.getDataSource(AuctionService.java:420)
+	at edu.core.java.auction.repository.database.DatabaseRepository.select(DatabaseRepository.java:16)
+	at edu.core.java.auction.repository.database.DatabaseSellerRepository.find(DatabaseSellerRepository.java:58)
+	at edu.core.java.auction.repository.database.DatabaseSellerRepository.contains(DatabaseSellerRepository.java:24)
+	at edu.core.java.auction.Main.addExistedEntity(Main.java:405)
+	at edu.core.java.auction.Main.main(Main.java:37)
+2017-05-10 19:35:42 - Application has started.
+2017-05-10 19:35:57 - HikariPool-1 - Starting...
+2017-05-10 19:35:57 - HikariPool-1 - Driver does not support get/set network timeout for connections. (Метод org.postgresql.jdbc.PgConnection.getNetworkTimeout() ещё не реализован)
+2017-05-10 19:35:57 - HikariPool-1 - Start completed.
+2017-05-10 19:35:57 - ERROR: relation "sellers" does not exist
+  Позиция: 15
+2017-05-10 19:35:57 - ERROR: relation "sellers" does not exist
+  Позиция: 13
+2017-05-10 19:35:57 - Seller with id = 1 was added to repository.
+2017-05-10 19:37:12 - Application has started.
+2017-05-10 19:37:16 - HikariPool-1 - Starting...
+2017-05-10 19:37:16 - HikariPool-1 - Driver does not support get/set network timeout for connections. (Метод org.postgresql.jdbc.PgConnection.getNetworkTimeout() ещё не реализован)
+2017-05-10 19:37:16 - HikariPool-1 - Start completed.
+2017-05-10 19:37:16 - ERROR: relation "auctioneer.sellers" does not exist
+  Позиция: 15
+2017-05-10 19:37:16 - ERROR: relation "auctioneer.sellers" does not exist
+  Позиция: 13
+2017-05-10 19:37:16 - Seller with id = 1 was added to repository.
+2017-05-10 19:39:48 - ERROR: relation "auctioneer.sellers" does not exist
+  Позиция: 15
+2017-05-10 19:39:48 - Domain objects were loaded.
+2017-05-10 19:46:41 - Application has started.
+2017-05-10 19:46:48 - HikariPool-1 - Starting...
+2017-05-10 19:46:48 - HikariPool-1 - Driver does not support get/set network timeout for connections. (Метод org.postgresql.jdbc.PgConnection.getNetworkTimeout() ещё не реализован)
+2017-05-10 19:46:48 - HikariPool-1 - Start completed.
+2017-05-10 19:46:48 - ERROR: relation "sellers" does not exist
+  Позиция: 15
+2017-05-10 19:46:48 - ERROR: relation "sellers" does not exist
+  Позиция: 13
+2017-05-10 19:46:48 - Seller with id = 1 was added to repository.
+2017-05-10 19:48:36 - Application has started.
+2017-05-10 19:49:01 - HikariPool-1 - Starting...
+2017-05-10 19:49:01 - HikariPool-1 - Driver does not support get/set network timeout for connections. (Метод org.postgresql.jdbc.PgConnection.getNetworkTimeout() ещё не реализован)
+2017-05-10 19:49:01 - HikariPool-1 - Start completed.
+2017-05-10 19:49:01 - ERROR: relation "sellers" does not exist
+  Позиция: 15
+2017-05-10 19:49:01 - ERROR: relation "sellers" does not exist
+  Позиция: 13
+2017-05-10 19:49:01 - Seller with id = 1 was added to repository.
+2017-05-10 19:51:17 - Application has started.
+2017-05-10 19:51:21 - HikariPool-1 - Starting...
+2017-05-10 19:51:21 - HikariPool-1 - Driver does not support get/set network timeout for connections. (Метод org.postgresql.jdbc.PgConnection.getNetworkTimeout() ещё не реализован)
+2017-05-10 19:51:21 - HikariPool-1 - Start completed.
+2017-05-10 19:51:21 - ERROR: syntax error at or near "'sellers'"
+  Позиция: 15
+2017-05-10 19:51:21 - ERROR: syntax error at or near "'sellers'"
+  Позиция: 13
+2017-05-10 19:51:21 - Seller with id = 1 was added to repository.
+2017-05-10 19:53:53 - Application has started.
+2017-05-10 19:53:56 - HikariPool-1 - Starting...
+2017-05-10 19:53:56 - HikariPool-1 - Driver does not support get/set network timeout for connections. (Метод org.postgresql.jdbc.PgConnection.getNetworkTimeout() ещё не реализован)
+2017-05-10 19:53:56 - HikariPool-1 - Start completed.
+2017-05-10 19:53:56 - ERROR: relation "sellers" does not exist
+  Позиция: 15
+2017-05-10 19:53:56 - ERROR: relation "sellers" does not exist
+  Позиция: 13
+2017-05-10 19:53:56 - Seller with id = 1 was added to repository.
+2017-05-10 19:57:38 - Application has started.
+2017-05-10 19:57:43 - HikariPool-1 - Starting...
+2017-05-10 19:57:43 - HikariPool-1 - Driver does not support get/set network timeout for connections. (Метод org.postgresql.jdbc.PgConnection.getNetworkTimeout() ещё не реализован)
+2017-05-10 19:57:43 - HikariPool-1 - Start completed.
+2017-05-10 19:57:43 - ERROR: relation "sellers" does not exist
+  Позиция: 15
+2017-05-10 19:57:43 - ERROR: relation "sellers" does not exist
+  Позиция: 13
+2017-05-10 19:57:43 - Seller with id = 1 was added to repository.
+2017-05-10 19:57:58 - ERROR: relation "sellers" does not exist
+  Позиция: 15
+2017-05-10 19:57:58 - ERROR: relation "sellers" does not exist
+  Позиция: 13
+2017-05-10 19:57:58 - Seller with id = 1 was added to repository.
+2017-05-10 19:58:05 - Application has started.
+2017-05-10 19:58:09 - HikariPool-1 - Starting...
+2017-05-10 19:58:09 - HikariPool-1 - Driver does not support get/set network timeout for connections. (Метод org.postgresql.jdbc.PgConnection.getNetworkTimeout() ещё не реализован)
+2017-05-10 19:58:09 - HikariPool-1 - Start completed.
+2017-05-10 19:58:09 - ERROR: relation "Sellers" does not exist
+  Позиция: 15
+2017-05-10 19:58:09 - ERROR: relation "Sellers" does not exist
+  Позиция: 13
+2017-05-10 19:58:09 - Seller with id = 1 was added to repository.
+2017-05-10 20:01:47 - Application has started.
+2017-05-10 20:01:55 - For input string: " FROM information_schema.tables "
+2017-05-10 20:02:12 - HikariPool-1 - Starting...
+2017-05-10 20:02:12 - HikariPool-1 - Driver does not support get/set network timeout for connections. (Метод org.postgresql.jdbc.PgConnection.getNetworkTimeout() ещё не реализован)
+2017-05-10 20:02:12 - HikariPool-1 - Start completed.
+2017-05-10 20:02:35 - ERROR: relation "sellers" does not exist
+  Позиция: 15
+2017-05-10 20:02:35 - ERROR: relation "sellers" does not exist
+  Позиция: 13
+2017-05-10 20:02:35 - Seller with id = 1 was added to repository.
+2017-05-10 20:03:10 - Application has started.
+2017-05-10 20:03:16 - HikariPool-1 - Starting...
+2017-05-10 20:03:16 - HikariPool-1 - Driver does not support get/set network timeout for connections. (Метод org.postgresql.jdbc.PgConnection.getNetworkTimeout() ещё не реализован)
+2017-05-10 20:03:16 - HikariPool-1 - Start completed.
+2017-05-10 20:03:35 - ERROR: relation "sellers" does not exist
+  Позиция: 15
+2017-05-10 20:03:57 - Application has started.
+2017-05-10 20:04:04 - HikariPool-1 - Starting...
+2017-05-10 20:04:05 - HikariPool-1 - Driver does not support get/set network timeout for connections. (Метод org.postgresql.jdbc.PgConnection.getNetworkTimeout() ещё не реализован)
+2017-05-10 20:04:05 - HikariPool-1 - Start completed.
+2017-05-10 20:04:38 - ERROR: relation "sellers" does not exist
+  Позиция: 15
+2017-05-10 20:04:50 - ERROR: relation "sellers" does not exist
+  Позиция: 13
+2017-05-10 20:04:50 - Seller with id = 1 was added to repository.
+2017-05-10 20:04:54 - Application has started.
+2017-05-10 20:05:03 - Application has started.
+2017-05-10 20:05:07 - HikariPool-1 - Starting...
+2017-05-10 20:05:07 - HikariPool-1 - Driver does not support get/set network timeout for connections. (Метод org.postgresql.jdbc.PgConnection.getNetworkTimeout() ещё не реализован)
+2017-05-10 20:05:07 - HikariPool-1 - Start completed.
+2017-05-10 20:05:17 - ERROR: relation "sellers" does not exist
+  Позиция: 15
+2017-05-10 20:05:17 - ERROR: relation "sellers" does not exist
+  Позиция: 13
+2017-05-10 20:05:17 - Seller with id = 1 was added to repository.
+2017-05-10 20:05:32 - Application has started.
+2017-05-10 20:05:38 - HikariPool-1 - Starting...
+2017-05-10 20:05:38 - HikariPool-1 - Driver does not support get/set network timeout for connections. (Метод org.postgresql.jdbc.PgConnection.getNetworkTimeout() ещё не реализован)
+2017-05-10 20:05:39 - HikariPool-1 - Start completed.
+2017-05-10 20:06:43 - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m4s550ms704µs71ns).
+2017-05-10 20:06:43 - ERROR: relation "sellers" does not exist
+  Позиция: 15
+2017-05-10 20:06:43 - ERROR: relation "sellers" does not exist
+  Позиция: 13
+2017-05-10 20:06:43 - Seller with id = 1 was added to repository.
+2017-05-10 20:06:46 - Application has started.
+2017-05-10 20:06:50 - HikariPool-1 - Starting...
+2017-05-10 20:06:51 - HikariPool-1 - Driver does not support get/set network timeout for connections. (Метод org.postgresql.jdbc.PgConnection.getNetworkTimeout() ещё не реализован)
+2017-05-10 20:06:51 - HikariPool-1 - Start completed.
+2017-05-10 20:07:21 - ERROR: relation "sellers" does not exist
+  Позиция: 15
+2017-05-10 20:07:27 - ERROR: relation "sellers" does not exist
+  Позиция: 13
+2017-05-10 20:07:27 - Seller with id = 1 was added to repository.
+2017-05-10 20:07:55 - Application has started.
+2017-05-10 20:08:01 - HikariPool-1 - Starting...
+2017-05-10 20:08:01 - HikariPool-1 - Driver does not support get/set network timeout for connections. (Метод org.postgresql.jdbc.PgConnection.getNetworkTimeout() ещё не реализован)
+2017-05-10 20:08:01 - HikariPool-1 - Start completed.
+2017-05-10 20:08:26 - ERROR: relation "sellers" does not exist
+  Позиция: 15
+2017-05-10 20:08:29 - ERROR: relation "sellers" does not exist
+  Позиция: 13
+2017-05-10 20:08:29 - Seller with id = 1 was added to repository.
+2017-05-10 20:10:01 - Application has started.
+2017-05-10 20:10:06 - HikariPool-1 - Starting...
+2017-05-10 20:10:06 - HikariPool-1 - Driver does not support get/set network timeout for connections. (Метод org.postgresql.jdbc.PgConnection.getNetworkTimeout() ещё не реализован)
+2017-05-10 20:10:06 - HikariPool-1 - Start completed.
+2017-05-10 20:10:09 - ERROR: syntax error at or near "'sellers'"
+  Позиция: 15
+2017-05-10 20:10:11 - ERROR: syntax error at or near "'sellers'"
+  Позиция: 13
+2017-05-10 20:10:11 - Seller with id = 1 was added to repository.
+2017-05-10 20:10:29 - Application has started.
+2017-05-10 20:10:32 - HikariPool-1 - Starting...
+2017-05-10 20:10:32 - HikariPool-1 - Driver does not support get/set network timeout for connections. (Метод org.postgresql.jdbc.PgConnection.getNetworkTimeout() ещё не реализован)
+2017-05-10 20:10:32 - HikariPool-1 - Start completed.
+2017-05-10 20:10:35 - ResultSet закрыт.
+2017-05-10 20:10:35 - Seller with id = 1 was added to repository.
+2017-05-10 20:10:54 - ResultSet закрыт.
+2017-05-10 20:10:54 - Domain objects were loaded.
+2017-05-10 20:11:25 - Application has started.
+2017-05-10 20:11:30 - HikariPool-1 - Starting...
+2017-05-10 20:11:30 - HikariPool-1 - Driver does not support get/set network timeout for connections. (Метод org.postgresql.jdbc.PgConnection.getNetworkTimeout() ещё не реализован)
+2017-05-10 20:11:31 - HikariPool-1 - Start completed.
+2017-05-10 20:11:31 - ResultSet закрыт.
+2017-05-10 20:11:31 - Seller with id = 1 was added to repository.
+2017-05-10 20:12:04 - Application has started.
+2017-05-10 20:12:10 - HikariPool-1 - Starting...
+2017-05-10 20:12:10 - HikariPool-1 - Driver does not support get/set network timeout for connections. (Метод org.postgresql.jdbc.PgConnection.getNetworkTimeout() ещё не реализован)
+2017-05-10 20:12:10 - HikariPool-1 - Start completed.
+2017-05-10 20:12:56 - ResultSet закрыт.
+2017-05-10 20:12:56 - Seller with id = 1 was added to repository.
+2017-05-10 20:30:18 - Application has started.
+2017-05-10 20:30:21 - For input string: "        BidValueObject vo = new BidValueObject();"
+2017-05-10 20:30:33 - HikariPool-1 - Starting...
+2017-05-10 20:30:33 - HikariPool-1 - Driver does not support get/set network timeout for connections. (Метод org.postgresql.jdbc.PgConnection.getNetworkTimeout() ещё не реализован)
+2017-05-10 20:30:33 - HikariPool-1 - Start completed.
+2017-05-10 20:30:33 - Seller with id = 1 already exists.
+2017-05-10 20:30:46 - ERROR: relation "products" does not exist
+  Позиция: 15
+2017-05-10 20:35:43 - Application has started.
+2017-05-10 20:35:52 - HikariPool-1 - Starting...
+2017-05-10 20:35:52 - HikariPool-1 - Driver does not support get/set network timeout for connections. (Метод org.postgresql.jdbc.PgConnection.getNetworkTimeout() ещё не реализован)
+2017-05-10 20:35:52 - HikariPool-1 - Start completed.
+2017-05-10 20:35:52 - ERROR: relation "products" does not exist
+  Позиция: 15
+2017-05-10 20:35:53 - Seller with id = 1 was deleted.
+2017-05-10 20:37:07 - Application has stopped.
+2017-05-10 20:39:28 - Application has started.
+2017-05-10 20:39:40 - HikariPool-1 - Starting...
+2017-05-10 20:39:40 - HikariPool-1 - Driver does not support get/set network timeout for connections. (Метод org.postgresql.jdbc.PgConnection.getNetworkTimeout() ещё не реализован)
+2017-05-10 20:39:41 - HikariPool-1 - Start completed.
+2017-05-10 20:39:41 - Seller with id = 1 was added to repository.
+2017-05-10 20:40:00 - src\main\data\Product\1.json (Системе не удается найти указанный путь)
+2017-05-10 20:40:15 - ERROR: argument of WHERE must be type boolean, not type integer
+  Позиция: 41
+2017-05-10 20:40:15 - ERROR: column "ownerid" of relation "products" does not exist
+  Позиция: 53
+2017-05-10 20:40:15 - Product with id = 1 was added to repository.
+2017-05-10 20:41:32 - Application has started.
+2017-05-10 20:41:49 - HikariPool-1 - Starting...
+2017-05-10 20:41:50 - HikariPool-1 - Driver does not support get/set network timeout for connections. (Метод org.postgresql.jdbc.PgConnection.getNetworkTimeout() ещё не реализован)
+2017-05-10 20:41:50 - HikariPool-1 - Start completed.
+2017-05-10 20:41:50 - Seller with id = 1 was added to repository.
+2017-05-10 20:41:55 - ERROR: column "ownerid" of relation "products" does not exist
+  Позиция: 53
+2017-05-10 20:41:55 - Product with id = 1 was added to repository.
+2017-05-10 20:43:11 - Domain object with id = 1 wasn't loaded.
+2017-05-10 20:44:15 - Conversion was successful.
+2017-05-10 20:44:15 - Domain object with id = 5 was loaded.
+2017-05-10 20:47:17 - Application has started.
+2017-05-10 20:47:18 - For input string: ""
+2017-05-10 20:47:36 - HikariPool-1 - Starting...
+2017-05-10 20:47:36 - HikariPool-1 - Driver does not support get/set network timeout for connections. (Метод org.postgresql.jdbc.PgConnection.getNetworkTimeout() ещё не реализован)
+2017-05-10 20:47:36 - HikariPool-1 - Start completed.
+2017-05-10 20:47:36 - Seller with id = 1 was added to repository.
+2017-05-10 20:47:52 - ERROR: insert or update on table "products" violates foreign key constraint "products_ownerID_fkey"
+  Подробности: Key (ownerid)=(1) is not present in table "sellers".
+2017-05-10 20:47:52 - Product with id = 1 was added to repository.
+2017-05-10 20:50:04 - Application has started.
+2017-05-10 20:50:10 - HikariPool-1 - Starting...
+2017-05-10 20:50:10 - HikariPool-1 - Driver does not support get/set network timeout for connections. (Метод org.postgresql.jdbc.PgConnection.getNetworkTimeout() ещё не реализован)
+2017-05-10 20:50:10 - HikariPool-1 - Start completed.
+2017-05-10 20:50:10 - Seller with id = 1 was added to repository.
+2017-05-10 20:51:13 - Product with id = 1 was added to repository.
+2017-05-10 20:51:30 - ERROR: argument of WHERE must be type boolean, not type integer
+  Позиция: 39
+2017-05-10 20:51:30 - Buyer with id = 1 was added to repository.
+2017-05-10 20:52:26 - Application has started.
+2017-05-10 20:52:40 - HikariPool-1 - Starting...
+2017-05-10 20:52:40 - HikariPool-1 - Driver does not support get/set network timeout for connections. (Метод org.postgresql.jdbc.PgConnection.getNetworkTimeout() ещё не реализован)
+2017-05-10 20:52:40 - HikariPool-1 - Start completed.
+2017-05-10 20:52:40 - Buyer with id = 1 already exists.
+2017-05-10 20:52:48 - Conversion was successful.
+2017-05-10 20:52:48 - Conversion was successful.
+2017-05-10 20:52:48 - Domain object with id = 7 was loaded.
+2017-05-10 20:52:48 - Domain object with id = 2 was loaded.
+2017-05-10 20:52:48 - Domain objects were loaded.
+2017-05-10 20:52:56 - Conversion was successful.
+2017-05-10 20:52:56 - Domain object with id = 1 was loaded.
+2017-05-10 20:52:56 - Domain objects were loaded.
+2017-05-10 20:53:00 - Conversion was successful.
+2017-05-10 20:53:00 - Domain object with id = 7 was loaded.
+2017-05-10 20:53:00 - Domain objects were loaded.
+2017-05-10 20:54:06 - ERROR: argument of WHERE must be type boolean, not type integer
+  Позиция: 37
+2017-05-10 20:54:06 - Lot with id = 1 was added to repository.
+2017-05-10 20:54:28 - Application has started.
+2017-05-10 20:54:40 - HikariPool-1 - Starting...
+2017-05-10 20:54:40 - HikariPool-1 - Driver does not support get/set network timeout for connections. (Метод org.postgresql.jdbc.PgConnection.getNetworkTimeout() ещё не реализован)
+2017-05-10 20:54:40 - HikariPool-1 - Start completed.
+2017-05-10 20:54:40 - Lot with id = 1 already exists.
+2017-05-10 20:54:46 - Conversion was successful.
+2017-05-10 20:54:46 - Conversion was successful.
+2017-05-10 20:54:46 - Domain object with id = 7 was loaded.
+2017-05-10 20:54:46 - Domain object with id = 2 was loaded.
+2017-05-10 20:54:46 - Domain objects were loaded.
+2017-05-10 20:54:49 - Conversion was successful.
+2017-05-10 20:54:49 - Domain object with id = 1 was loaded.
+2017-05-10 20:54:49 - Domain objects were loaded.
+2017-05-10 20:54:51 - Conversion was successful.
+2017-05-10 20:54:51 - Domain object with id = 7 was loaded.
+2017-05-10 20:54:51 - Domain objects were loaded.
+2017-05-10 20:54:53 - Conversion was successful.
+2017-05-10 20:54:53 - Conversion was successful.
+2017-05-10 20:54:53 - Conversion was successful.
+2017-05-10 20:54:53 - Domain object with id = 7 was loaded.
+2017-05-10 20:54:53 - Domain object with id = 2 was loaded.
+2017-05-10 20:54:53 - Domain object with id = 1 was loaded.
+2017-05-10 20:54:53 - Domain objects were loaded.
+2017-05-10 20:56:01 - ERROR: argument of WHERE must be type boolean, not type integer
+  Позиция: 37
+2017-05-10 20:56:01 - ERROR: syntax error at or near "WHERE"
+  Позиция: 31
+2017-05-10 20:56:01 - ERROR: syntax error at or near "WHERE"
+  Позиция: 29
+2017-05-10 20:56:01 - Bid with id = 1 was added to repository.
+2017-05-10 20:56:20 - Application has started.
+2017-05-10 20:56:33 - HikariPool-1 - Starting...
+2017-05-10 20:56:33 - HikariPool-1 - Driver does not support get/set network timeout for connections. (Метод org.postgresql.jdbc.PgConnection.getNetworkTimeout() ещё не реализован)
+2017-05-10 20:56:33 - HikariPool-1 - Start completed.
+2017-05-10 20:56:33 - Lot with id = 1 already exists.
+2017-05-10 20:56:38 - Conversion was successful.
+2017-05-10 20:56:38 - Conversion was successful.
+2017-05-10 20:56:38 - Conversion was successful.
+2017-05-10 20:56:38 - Conversion was successful.
+2017-05-10 20:56:38 - Domain object with id = 7 was loaded.
+2017-05-10 20:56:38 - Domain object with id = 2 was loaded.
+2017-05-10 20:56:38 - Domain object with id = 1 was loaded.
+2017-05-10 20:56:38 - Conversion was successful.
+2017-05-10 20:56:38 - Domain object with id = 1 was loaded.
+2017-05-10 20:56:38 - Domain object with id = 1 was loaded.
+2017-05-10 20:56:38 - Domain objects were loaded.

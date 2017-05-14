@@ -1,0 +1,12 @@
+2017-04-17 09:05:16 - Application has started.
+2017-04-17 09:05:23 - Application has stopped.
+2017-04-17 09:09:22 - Application has started.
+2017-04-17 09:10:03 - Application has stopped.
+2017-04-17 09:10:43 - Application has started.
+2017-04-17 09:10:47 - Application has stopped.
+2017-04-17 09:12:03 - Application has started.
+2017-04-17 09:12:04 - Application has stopped.
+
+javac -d bin -sourcepath src/main/java -classpath libs/jackson-core-asl-1.9.13.jar;libs/jackson-mapper-asl-1.9.13.jar;libs/logback-classic-1.2.3.jar;libs/logback-core-1.2.3.jar;libs/slf4j-api-1.7.16.jar src/main/java/edu/core/java/auction/Main.java2017-04-17 11:18:39 - Application has started.
+2017-04-17 11:18:42 - Application has stopped.
+2017-04-17 11:23:16 - Application has started.

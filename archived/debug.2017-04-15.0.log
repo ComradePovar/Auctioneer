@@ -1,0 +1,34 @@
+2017-04-15 12:09:37 - Application has started.
+2017-04-15 12:09:57 - Application has stopped.
+2017-04-15 13:40:57 - Application has started.
+2017-04-15 13:41:04 - 1 (Не удается найти указанный файл)
+2017-04-15 13:41:11 - Application has stopped.
+2017-04-15 13:43:21 - Application has started.
+2017-04-15 13:43:27 - Application has stopped.
+2017-04-15 13:43:46 - Application has started.
+2017-04-15 13:43:48 - Application has stopped.
+2017-04-15 13:56:35 - Application has started.
+2017-04-15 13:56:40 - Application has stopped.
+2017-04-15 14:01:03 - Application has started.
+2017-04-15 14:01:05 - Application has stopped.
+2017-04-15 14:02:19 - Application has started.
+2017-04-15 14:02:21 - Application has stopped.
+2017-04-15 14:02:43 - Application has started.
+2017-04-15 14:02:50 - Application has stopped.
+2017-04-15 14:40:37 - Application has started.
+2017-04-15 14:40:50 - data\Sellers\1.json (Системе не удается найти указанный путь)
+2017-04-15 14:41:55 - Application has stopped.
+2017-04-15 14:41:59 - Application has started.
+2017-04-15 14:42:08 - Value object was added.
+2017-04-15 14:42:08 - Seller with id = 1 was added to repository.
+2017-04-15 14:42:19 - Value object with id = 1 was found.
+2017-04-15 14:42:19 - Conversion was successful.
+2017-04-15 14:42:19 - Domain object with id = 1 was loaded.
+2017-04-15 14:42:37 - Application has stopped.
+2017-04-15 15:16:46 - Application has started.
+2017-04-15 15:16:58 - Value object was added.
+2017-04-15 15:16:58 - Seller with id = 1 was added to repository.
+2017-04-15 15:17:03 - Value object with id = 1 was found.
+2017-04-15 15:17:03 - Conversion was successful.
+2017-04-15 15:17:03 - Domain object with id = 1 was loaded.
+2017-04-15 15:17:06 - Application has stopped.

@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Created-By: 1.8.0_111 (Oracle Corporation)
+Main-Class: edu.core.java.auction.Main
+Class-Path: libs/jackson-core-asl-1.9.13.jar libs/jackson-mapper-asl-1.9.13.jar libs/logback-classic-1.2.3.jar libs/logback-core-1.2.3.jar libs/slf4j-api-1.7.16.jar
