@@ -16,7 +16,6 @@ import java.util.HashMap;
  */
 public class DatabaseProductRepository extends DatabaseRepository<ProductValueObject>
                                        implements ProductRepository{
-    protected static Long maxId = 0L;
     protected String tableName = "products";
     private Logger logger = LoggerFactory.getLogger(DatabaseProductRepository.class);
 
@@ -28,8 +27,8 @@ public class DatabaseProductRepository extends DatabaseRepository<ProductValueOb
     @Override
     public void add(ProductValueObject object) {
         try{
-            String values = "'" + object.title + "', '" + object.description + "', " + object.ownerId;
-            String query = getInsertQuery(tableName + "(title, description, ownerID)", values);
+            String values = object.id + ",'" + object.title + "', '" + object.description + "', " + object.ownerId;
+            String query = getInsertQuery(tableName + "(id, title, description, ownerID)", values);
             modify(query);
         } catch (SQLException ex){
             logger.error(ex.getMessage());
@@ -54,7 +53,7 @@ public class DatabaseProductRepository extends DatabaseRepository<ProductValueOb
     public ProductValueObject find(Long id) {
         try{
             ProductValueObject result;
-            String condition = "id = " + id.toString();
+            String condition = "id = " + id;
             String query = getSelectQuery(tableName, condition);
             HashMap<Long, ProductValueObject> results = select(query);
             return results.get(id);
@@ -67,7 +66,7 @@ public class DatabaseProductRepository extends DatabaseRepository<ProductValueOb
     @Override
     public void delete(Long id) {
         try{
-            String condition = "id = " + id.toString();
+            String condition = "id = " + id;
             String query = getDeleteQuery(tableName, condition);
             modify(query);
         } catch (SQLException ex){
@@ -85,15 +84,6 @@ public class DatabaseProductRepository extends DatabaseRepository<ProductValueOb
             logger.error(ex.getMessage());
         }
         return null;
-    }
-
-    @Override
-    public Long getMaxId(){
-        return maxId;
-    }
-    @Override
-    public void incMaxId(){
-        maxId++;
     }
 
     @Override

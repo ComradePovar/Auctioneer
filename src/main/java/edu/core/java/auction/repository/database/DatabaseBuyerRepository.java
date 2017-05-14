@@ -17,7 +17,6 @@ import java.util.HashMap;
  */
 public class DatabaseBuyerRepository extends DatabaseRepository<BuyerValueObject>
                                      implements BuyerRepository{
-    protected static Long maxId = 0L;
     protected String tableName = "buyers";
     private Logger logger = LoggerFactory.getLogger(DatabaseBuyerRepository.class);
 
@@ -29,8 +28,8 @@ public class DatabaseBuyerRepository extends DatabaseRepository<BuyerValueObject
     @Override
     public void add(BuyerValueObject object) {
         try{
-            String values = "'" + object.name + "', " + object.accountBalance;
-            String query = getInsertQuery(tableName + "(name, account_balance)", values);
+            String values = object.id + ",'" + object.name + "', " + object.accountBalance;
+            String query = getInsertQuery(tableName + "(id, name, account_balance)", values);
             modify(query);
         } catch (SQLException ex){
             logger.error(ex.getMessage());
@@ -53,8 +52,8 @@ public class DatabaseBuyerRepository extends DatabaseRepository<BuyerValueObject
     @Override
     public BuyerValueObject find(Long id) {
         try{
-            BuyerValueObject result;
-            String condition = "id = " + id.toString();
+            System.out.println(getSelectQuery(tableName, "id = " + id));
+            String condition = "id = " + id;
             String query = getSelectQuery(tableName, condition);
             HashMap<Long, BuyerValueObject> results = select(query);
             return results.get(id);
@@ -67,7 +66,7 @@ public class DatabaseBuyerRepository extends DatabaseRepository<BuyerValueObject
     @Override
     public void delete(Long id) {
         try{
-            String condition = "id = " + id.toString();
+            String condition = "id = " + id;
             String query = getDeleteQuery(tableName, condition);
             modify(query);
         } catch (SQLException ex){
@@ -85,15 +84,6 @@ public class DatabaseBuyerRepository extends DatabaseRepository<BuyerValueObject
             logger.error(ex.getMessage());
         }
         return null;
-    }
-
-    @Override
-    public Long getMaxId(){
-        return maxId;
-    }
-    @Override
-    public void incMaxId(){
-        maxId++;
     }
 
     @Override

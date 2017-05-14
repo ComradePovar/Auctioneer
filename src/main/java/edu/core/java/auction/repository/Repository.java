@@ -23,7 +23,4 @@ public interface Repository<V extends ValueObject> {
     void delete(Long id);
 
     Collection<V> getAll();
-
-    Long getMaxId();
-    void incMaxId();
 }

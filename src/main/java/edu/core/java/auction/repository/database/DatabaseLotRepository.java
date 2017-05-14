@@ -16,7 +16,6 @@ import java.util.HashMap;
  */
 public class DatabaseLotRepository extends DatabaseRepository<LotValueObject>
                                    implements LotRepository{
-    protected static Long maxId = 0L;
     protected String tableName = "lots";
     private Logger logger = LoggerFactory.getLogger(DatabaseLotRepository.class);
 
@@ -28,8 +27,8 @@ public class DatabaseLotRepository extends DatabaseRepository<LotValueObject>
     @Override
     public void add(LotValueObject object) {
         try{
-            String values = object.productId + ", '" + object.endDate + "', " + object.currentPrice;
-            String query = getInsertQuery(tableName + "(productID, end_date, current_price)", values);
+            String values = object.id + ", " + object.productId + ", '" + object.endDate + "', " + object.currentPrice;
+            String query = getInsertQuery(tableName + "(id, productID, end_date, current_price)", values);
             modify(query);
         } catch (SQLException ex){
             logger.error(ex.getMessage());
@@ -54,7 +53,7 @@ public class DatabaseLotRepository extends DatabaseRepository<LotValueObject>
     public LotValueObject find(Long id) {
         try{
             LotValueObject result;
-            String condition = "id = " + id.toString();
+            String condition = "id = " + id;
             String query = getSelectQuery(tableName, condition);
             HashMap<Long, LotValueObject> results = select(query);
             return results.get(id);
@@ -67,7 +66,7 @@ public class DatabaseLotRepository extends DatabaseRepository<LotValueObject>
     @Override
     public void delete(Long id) {
         try{
-            String condition = "id = " + id.toString();
+            String condition = "id = " + id;
             String query = getDeleteQuery(tableName, condition);
             modify(query);
         } catch (SQLException ex){
@@ -85,15 +84,6 @@ public class DatabaseLotRepository extends DatabaseRepository<LotValueObject>
             logger.error(ex.getMessage());
         }
         return null;
-    }
-
-    @Override
-    public Long getMaxId(){
-        return maxId;
-    }
-    @Override
-    public void incMaxId(){
-        maxId++;
     }
 
     @Override

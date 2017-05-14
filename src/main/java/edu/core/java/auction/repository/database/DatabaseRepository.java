@@ -32,22 +32,22 @@ public abstract class DatabaseRepository<V extends ValueObject> implements Repos
     protected abstract HashMap<Long, V> getValues(ResultSet set) throws SQLException;
 
     protected String getSelectQuery(String table, String condition){
-        return "SELECT * FROM " + table + " WHERE " + condition;
+        return "SELECT * FROM " + table + " WHERE " + condition + ";";
     }
 
     protected String getSelectAllQuery(String table){
-        return "SELECT * FROM " + table;
+        return "SELECT * FROM " + table + ";";
     }
 
     protected String getInsertQuery(String tableAndColumns, String values){
-        return "INSERT INTO " + tableAndColumns + " VALUES (" + values + ")";
+        return "INSERT INTO " + tableAndColumns + " VALUES (" + values + ")" + ";";
     }
 
     protected String getDeleteQuery(String table, String condition){
-        return "DELETE FROM " + table + " WHERE " + condition;
+        return "DELETE FROM " + table + " WHERE " + condition + ";";
     }
 
     protected String getUpdateQuery(String table, String values, String condition){
-        return "UPDATE " + table + " SET " + " WHERE " + condition;
+        return "UPDATE " + table + " SET " + " WHERE " + condition + ";";
     }
 }

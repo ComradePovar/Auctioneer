@@ -93,7 +93,7 @@ public class AuctionService {
 
     private AuctionService(){
         String repType = PropertiesProvider.getInstance().getApplicationProperties().getProperty("Repository_type");
-        if (!repType.equals("database")){
+        if (repType.equals("Database")){
             bidRepository = new DatabaseBidRepository();
             lotRepository = new DatabaseLotRepository();
             buyerRepository = new DatabaseBuyerRepository();
@@ -200,14 +200,6 @@ public class AuctionService {
         return buyerLoader.getEntity(id);
     }
 
-    public BuyerValueObject createBuyer(String name, double accountBalance){
-        BuyerValueObject buyerValueObject = new BuyerValueObject(buyerRepository.getMaxId() + 1, name, accountBalance);
-        buyerRepository.incMaxId();
-        buyerRepository.add(buyerValueObject);
-
-        return buyerValueObject;
-    }
-
     public void updateBuyer(BuyerValueObject buyer){
         buyerRepository.update(buyer);
     }
@@ -235,15 +227,6 @@ public class AuctionService {
 
     public Seller getSellerById(Long id){
         return sellerLoader.getEntity(id);
-    }
-
-    public SellerValueObject createSeller(String name, double accountBalance, double commissionPercentage){
-        SellerValueObject sellerValueObjectValue = new SellerValueObject(sellerRepository.getMaxId() + 1, name,
-                accountBalance, commissionPercentage);
-        sellerRepository.incMaxId();
-        sellerRepository.add(sellerValueObjectValue);
-
-        return sellerValueObjectValue;
     }
 
     public void updateSeller(SellerValueObject seller){
@@ -279,15 +262,6 @@ public class AuctionService {
         return productLoader.getEntity(id);
     }
 
-    public ProductValueObject createProduct(String title, String description, Long ownerId){
-        ProductValueObject productValueObject = new ProductValueObject(productRepository.getMaxId() + 1,
-                title, description, ownerId);
-        productRepository.incMaxId();
-        productRepository.add(productValueObject);
-
-        return productValueObject;
-    }
-
     public void updateProduct(ProductValueObject product){
         productRepository.update(product);
     }
@@ -321,7 +295,15 @@ public class AuctionService {
         BidValueObject bidValueObject = new BidValueObject(id, lotId, buyerId, bidAmount);
 
         BuyerValueObject buyerValueObject = buyerRepository.find(buyerId);
+        if (buyerValueObject == null){
+            logger.info("Buyer is null. Unable to create a bid.");
+            return null;
+        }
         LotValueObject lotValueObject = lotRepository.find(lotId);
+        if (lotValueObject == null){
+            logger.info("Lot is null. Unable to create a bid.");
+            return null;
+        }
 
         if (buyerValueObject.accountBalance >= bidAmount && bidAmount >= lotValueObject.currentPrice) {
             BidValueObject oldBidValueObject = null;
@@ -349,15 +331,22 @@ public class AuctionService {
             return null;
         }
 
+        logger.info("Bid with id = " + bidValueObject.id + " was added to repository.");
         return bidValueObject;
     }
 
     public void deleteBidById(Long id) {
         BidValueObject bidValueObject = bidRepository.find(id);
+        if (bidValueObject == null){
+            logger.info("Bid with id = " + id + " was not found.");
+            return;
+        }
         BuyerValueObject buyerValueObject = buyerRepository.find(bidValueObject.buyerId);
-        buyerValueObject.accountBalance += bidValueObject.amount;
-
-        buyerRepository.update(buyerValueObject);
+        System.out.println(buyerValueObject);
+        if (buyerValueObject != null) {
+            buyerValueObject.accountBalance += bidValueObject.amount;
+            buyerRepository.update(buyerValueObject);
+        }
         bidRepository.delete(id);
     }
 
@@ -401,7 +390,8 @@ public class AuctionService {
                 break;
             }
         }
-        deleteBidById(bidId);
+        if (bidId != null)
+            deleteBidById(bidId);
 
         lotRepository.delete(id);
     }

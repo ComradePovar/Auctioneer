@@ -15,7 +15,6 @@ import java.util.HashMap;
  */
 public class DatabaseSellerRepository extends DatabaseRepository<SellerValueObject>
                                       implements SellerRepository{
-    protected static Long maxId = 0L;
     protected String tableName = "sellers";
     private Logger logger = LoggerFactory.getLogger(DatabaseSellerRepository.class);
 
@@ -27,8 +26,8 @@ public class DatabaseSellerRepository extends DatabaseRepository<SellerValueObje
     @Override
     public void add(SellerValueObject object) {
         try{
-            String values = "'" + object.name + "', '" + object.accountBalance + "', '" + object.commissionPercentage + "'";
-            String query = getInsertQuery(tableName + "(name, account_balance, commission_percentage)", values);
+            String values = object.id + ",'" + object.name + "', '" + object.accountBalance + "', '" + object.commissionPercentage + "'";
+            String query = getInsertQuery(tableName + "(id, name, account_balance, commission_percentage)", values);
             modify(query);
         } catch (SQLException ex){
             logger.error(ex.getMessage());
@@ -53,7 +52,7 @@ public class DatabaseSellerRepository extends DatabaseRepository<SellerValueObje
     public SellerValueObject find(Long id) {
         try{
             SellerValueObject result;
-            String condition = "id = " + id.toString();
+            String condition = "id = " + id;
             String query = getSelectQuery(tableName, condition);
             HashMap<Long, SellerValueObject> set = select(query);
             return set.get(id);
@@ -66,7 +65,7 @@ public class DatabaseSellerRepository extends DatabaseRepository<SellerValueObje
     @Override
     public void delete(Long id) {
         try{
-            String condition = "id = " + id.toString();
+            String condition = "id = " + id;
             String query = getDeleteQuery(tableName, condition);
             modify(query);
         } catch (SQLException ex){
@@ -84,15 +83,6 @@ public class DatabaseSellerRepository extends DatabaseRepository<SellerValueObje
             logger.error(ex.getMessage());
         }
         return null;
-    }
-
-    @Override
-    public Long getMaxId(){
-        return maxId;
-    }
-    @Override
-    public void incMaxId(){
-        maxId++;
     }
 
     @Override

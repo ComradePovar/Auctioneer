@@ -22,6 +22,7 @@ public abstract class CollectionRepository<V extends ValueObject> implements Rep
         public void add(V object){
             if (object != null) {
                 repository.put(object.id, object);
+                incMaxId();
                 logger.info("Value object was added.");
             } else {
                 logger.warn("Value object is null.");
@@ -58,5 +59,5 @@ public abstract class CollectionRepository<V extends ValueObject> implements Rep
         }
 
         public abstract Long getMaxId();
-        public abstract void incMaxId();
+        protected abstract void incMaxId();
 }

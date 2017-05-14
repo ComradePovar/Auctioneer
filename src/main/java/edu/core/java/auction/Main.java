@@ -383,7 +383,6 @@ public class Main {
                     return;
                 }
                 productRepository.add(productValueObject);
-                productRepository.incMaxId();
                 logger.info("Product with id = " + productValueObject.id + " was added to repository.");
                 break;
             case 2:
@@ -395,7 +394,6 @@ public class Main {
                     return;
                 }
                 buyerRepository.add(buyerValueObject);
-                buyerRepository.incMaxId();
                 logger.info("Buyer with id = " + buyerValueObject.id + " was added to repository.");
                 break;
             case 3:
@@ -407,7 +405,6 @@ public class Main {
                     return;
                 }
                 sellerRepository.add(sellerValueObject);
-                sellerRepository.incMaxId();
                 logger.info("Seller with id = " + sellerValueObject.id + " was added to repository.");
                 break;
             case 4:
@@ -419,7 +416,6 @@ public class Main {
                     return;
                 }
                 lotRepository.add(lotValueObject);
-                lotRepository.incMaxId();
                 logger.info("Lot with id = " + lotValueObject.id + " was added to repository.");
                 break;
             case 5:
@@ -431,7 +427,6 @@ public class Main {
                     return;
                 }
                 service.createBid(bidValueObject.id, bidValueObject.buyerId, bidValueObject.lotId, bidValueObject.amount);
-                logger.info("Bid with id = " + bidValueObject.id + " was added to repository.");
                 break;
             default:
                 logger.warn("Incorrect choice.");
