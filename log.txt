@@ -45,3 +45,33 @@
 2017-05-14 10:46:47 - Domain object with id = 2 was loaded.
 2017-05-14 10:46:47 - Domain object with id = 1 was loaded.
 2017-05-14 10:46:47 - Domain objects were loaded.
+2017-05-14 10:56:57 - Application has started.
+2017-05-14 10:57:00 - HikariPool-1 - Starting...
+2017-05-14 10:57:00 - HikariPool-1 - Driver does not support get/set network timeout for connections. (Метод org.postgresql.jdbc.PgConnection.getNetworkTimeout() ещё не реализован)
+2017-05-14 10:57:00 - HikariPool-1 - Start completed.
+2017-05-14 10:57:00 - Conversion was successful.
+2017-05-14 10:57:00 - Domain object with id = 7 was loaded.
+2017-05-14 10:57:00 - Domain objects were loaded.
+2017-05-14 10:57:40 - Application has started.
+2017-05-14 10:57:43 - HikariPool-1 - Starting...
+2017-05-14 10:57:44 - HikariPool-1 - Driver does not support get/set network timeout for connections. (Метод org.postgresql.jdbc.PgConnection.getNetworkTimeout() ещё не реализован)
+2017-05-14 10:57:44 - HikariPool-1 - Start completed.
+2017-05-14 10:57:44 - Conversion was successful.
+2017-05-14 10:57:44 - Domain object with id = 7 was loaded.
+2017-05-14 10:57:44 - Domain objects were loaded.
+2017-05-14 10:57:57 - Application has started.
+2017-05-14 10:58:00 - HikariPool-1 - Starting...
+2017-05-14 10:58:00 - HikariPool-1 - Driver does not support get/set network timeout for connections. (Метод org.postgresql.jdbc.PgConnection.getNetworkTimeout() ещё не реализован)
+2017-05-14 10:58:00 - HikariPool-1 - Start completed.
+2017-05-14 10:58:00 - Conversion was successful.
+2017-05-14 10:58:00 - Domain object with id = 7 was loaded.
+2017-05-14 10:58:00 - Domain objects were loaded.
+2017-05-14 10:58:26 - Application has started.
+2017-05-14 10:58:32 - HikariPool-1 - Starting...
+2017-05-14 10:58:32 - HikariPool-1 - Driver does not support get/set network timeout for connections. (Метод org.postgresql.jdbc.PgConnection.getNetworkTimeout() ещё не реализован)
+2017-05-14 10:58:32 - HikariPool-1 - Start completed.
+2017-05-14 10:58:32 - Conversion was successful.
+2017-05-14 10:58:32 - Conversion was successful.
+2017-05-14 10:58:32 - Domain object with id = 7 was loaded.
+2017-05-14 10:58:32 - Domain object with id = 2 was loaded.
+2017-05-14 10:58:32 - Domain objects were loaded.

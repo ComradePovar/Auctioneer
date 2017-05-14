@@ -17,7 +17,7 @@ import java.util.HashMap;
 public class DatabaseProductRepository extends DatabaseRepository<ProductValueObject>
                                        implements ProductRepository{
     protected static Long maxId = 0L;
-    protected String tableName = "auctioneer.products";
+    protected String tableName = "products";
     private Logger logger = LoggerFactory.getLogger(DatabaseProductRepository.class);
 
     @Override

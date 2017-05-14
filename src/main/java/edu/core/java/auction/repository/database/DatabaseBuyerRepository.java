@@ -18,7 +18,7 @@ import java.util.HashMap;
 public class DatabaseBuyerRepository extends DatabaseRepository<BuyerValueObject>
                                      implements BuyerRepository{
     protected static Long maxId = 0L;
-    protected String tableName = "auctioneer.buyers";
+    protected String tableName = "buyers";
     private Logger logger = LoggerFactory.getLogger(DatabaseBuyerRepository.class);
 
     @Override

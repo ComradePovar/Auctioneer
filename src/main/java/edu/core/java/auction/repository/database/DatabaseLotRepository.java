@@ -17,7 +17,7 @@ import java.util.HashMap;
 public class DatabaseLotRepository extends DatabaseRepository<LotValueObject>
                                    implements LotRepository{
     protected static Long maxId = 0L;
-    protected String tableName = "auctioneer.lots";
+    protected String tableName = "lots";
     private Logger logger = LoggerFactory.getLogger(DatabaseLotRepository.class);
 
     @Override

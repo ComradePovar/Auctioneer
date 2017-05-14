@@ -17,7 +17,7 @@ import java.util.HashMap;
 public class DatabaseBidRepository extends DatabaseRepository<BidValueObject>
                                    implements BidRepository{
     protected static Long maxId = 0L;
-    protected String tableName = "auctioneer.bids";
+    protected String tableName = "bids";
     private Logger logger = LoggerFactory.getLogger(DatabaseBidRepository.class);
 
     @Override
