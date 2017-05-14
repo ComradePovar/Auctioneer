@@ -48,6 +48,6 @@ public abstract class DatabaseRepository<V extends ValueObject> implements Repos
     }
 
     protected String getUpdateQuery(String table, String values, String condition){
-        return "UPDATE " + table + " SET " + " WHERE " + condition + ";";
+        return "UPDATE " + table + " SET " + values + " WHERE " + condition + ";";
     }
 }

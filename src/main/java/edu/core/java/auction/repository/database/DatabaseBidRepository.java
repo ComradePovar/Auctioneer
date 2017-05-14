@@ -41,7 +41,7 @@ public class DatabaseBidRepository extends DatabaseRepository<BidValueObject>
             String values = "lotID = " + object.lotId +
                     ", buyerID = " + object.buyerId +
                     ", amount = " + object.amount;
-            String condition = object.id.toString();
+            String condition = "id = " + object.id;
             String query = getUpdateQuery(tableName, values, condition);
             modify(query);
         } catch (SQLException ex){

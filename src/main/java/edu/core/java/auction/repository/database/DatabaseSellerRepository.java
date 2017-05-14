@@ -40,7 +40,7 @@ public class DatabaseSellerRepository extends DatabaseRepository<SellerValueObje
             String values = "name = '" + object.name +
                             "', account_balance = " + object.accountBalance +
                             ", commission_percentage = " + object.commissionPercentage;
-            String condition = object.id.toString();
+            String condition = "id = " + object.id;
             String query = getUpdateQuery(tableName, values, condition);
             modify(query);
         } catch (SQLException ex){

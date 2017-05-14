@@ -94,17 +94,17 @@ public class AuctionService {
     private AuctionService(){
         String repType = PropertiesProvider.getInstance().getApplicationProperties().getProperty("Repository_type");
         if (repType.equals("Database")){
-            bidRepository = new DatabaseBidRepository();
-            lotRepository = new DatabaseLotRepository();
-            buyerRepository = new DatabaseBuyerRepository();
-            sellerRepository = new DatabaseSellerRepository();
-            productRepository = new DatabaseProductRepository();
-        } else{
             bidRepository = new CollectionBidRepository();
             lotRepository = new CollectionLotRepository();
             buyerRepository = new CollectionBuyerRepository();
             sellerRepository = new CollectionSellerRepository();
             productRepository = new CollectionProductRepository();
+        } else{
+            bidRepository = new DatabaseBidRepository();
+            lotRepository = new DatabaseLotRepository();
+            buyerRepository = new DatabaseBuyerRepository();
+            sellerRepository = new DatabaseSellerRepository();
+            productRepository = new DatabaseProductRepository();
         }
 
         bidTranslator = new BidTranslator();

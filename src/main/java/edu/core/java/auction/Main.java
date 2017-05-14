@@ -184,8 +184,8 @@ public class Main {
 
     public static void updateEntity() throws IOException, ParseException, NumberFormatException{
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println(propertiesProvider.getApplicationProperties().getProperty("Enter_filepath"));
-        String filePath = reader.readLine();
+        System.out.println(propertiesProvider.getApplicationProperties().getProperty("Enter_entity_id"));
+        Long id = Long.parseLong(reader.readLine());
         System.out.println(propertiesProvider.getApplicationProperties().getProperty("Update_product"));
         System.out.println(propertiesProvider.getApplicationProperties().getProperty("Update_buyer"));
         System.out.println(propertiesProvider.getApplicationProperties().getProperty("Update_seller"));
@@ -196,30 +196,30 @@ public class Main {
         int choice = Integer.parseInt(reader.readLine());
         switch(choice) {
             case 1:
-                ProductValueObject product = mapper.readValue(new FileInputStream(filePath), ProductValueObject.class);
-                System.out.println(product);
+                ProductValueObject product = service.getProductRepository().find(id);
+                System.out.println(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(product));
 
                 do {
-                    System.out.print(propertiesProvider.getApplicationProperties().getProperty("Edit_title"));
-                    System.out.print(propertiesProvider.getApplicationProperties().getProperty("Edit_description"));
-                    System.out.print(propertiesProvider.getApplicationProperties().getProperty("Set_owner"));
-                    System.out.print(propertiesProvider.getApplicationProperties().getProperty("Main_menu"));
+                    System.out.println(propertiesProvider.getApplicationProperties().getProperty("Edit_title"));
+                    System.out.println(propertiesProvider.getApplicationProperties().getProperty("Edit_description"));
+                    System.out.println(propertiesProvider.getApplicationProperties().getProperty("Set_owner"));
+                    System.out.println(propertiesProvider.getApplicationProperties().getProperty("Main_menu"));
                     choice = Integer.parseInt(reader.readLine());
                     switch (choice) {
                         case 1:
-                            System.out.print(propertiesProvider.getApplicationProperties().getProperty("Enter_new_title"));
+                            System.out.println(propertiesProvider.getApplicationProperties().getProperty("Enter_new_title"));
                             product.title = reader.readLine();
                             service.updateProduct(product);
                             logger.info("Product with ID = " + product.id + " was updated.");
                             break;
                         case 2:
-                            System.out.print(propertiesProvider.getApplicationProperties().getProperty("Enter_new_description"));
+                            System.out.println(propertiesProvider.getApplicationProperties().getProperty("Enter_new_description"));
                             product.description = reader.readLine();
                             service.updateProduct(product);
                             logger.info("Product with ID = " + product.id + " was updated.");
                             break;
                         case 3:
-                            System.out.print(propertiesProvider.getApplicationProperties().getProperty("Enter_new_owner_id"));
+                            System.out.println(propertiesProvider.getApplicationProperties().getProperty("Enter_new_owner_id"));
                             product.ownerId = Long.parseLong(reader.readLine());
                             service.updateProduct(product);
                             logger.info("Product with ID = " + product.id + " was updated.");
@@ -231,12 +231,10 @@ public class Main {
                     }
                 } while (choice != 4);
 
-                mapper.writeValue(new FileOutputStream(filePath), product);
-                logger.info("File with product ID = " + product.id + " was rewrote.");
                 break;
             case 2:
-                BuyerValueObject buyer = mapper.readValue(new FileInputStream(filePath), BuyerValueObject.class);
-                System.out.println(buyer);
+                BuyerValueObject buyer = service.getBuyerRepository().find(id);
+                System.out.println(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(buyer));
 
                 do {
                     System.out.println(propertiesProvider.getApplicationProperties().getProperty("Edit_name"));
@@ -245,13 +243,13 @@ public class Main {
                     choice = Integer.parseInt(reader.readLine());
                     switch (choice) {
                         case 1:
-                            System.out.print(propertiesProvider.getApplicationProperties().getProperty("Enter_new_name"));
+                            System.out.println(propertiesProvider.getApplicationProperties().getProperty("Enter_new_name"));
                             buyer.name = reader.readLine();
                             service.updateBuyer(buyer);
                             logger.info("Buyer with ID = " + buyer.id + " was updated.");
                             break;
                         case 2:
-                            System.out.print(propertiesProvider.getApplicationProperties().getProperty("Enter_new_money_amount"));
+                            System.out.println(propertiesProvider.getApplicationProperties().getProperty("Enter_new_money_amount"));
                             buyer.accountBalance += Double.parseDouble(reader.readLine());
                             service.updateBuyer(buyer);
                             logger.info("Buyer with ID = " + buyer.id + " was updated.");
@@ -263,12 +261,10 @@ public class Main {
                     }
                 } while (choice != 3);
 
-                mapper.writeValue(new FileOutputStream(filePath), buyer);
-                logger.info("File with buyer ID = " + buyer.id + " was rewrote.");
                 break;
             case 3:
-                SellerValueObject seller = mapper.readValue(new FileInputStream(filePath), SellerValueObject.class);
-                System.out.println(seller);
+                SellerValueObject seller = service.getSellerRepository().find(id);
+                System.out.println(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(seller));
 
                 do {
                     System.out.println(propertiesProvider.getApplicationProperties().getProperty("Edit_name"));
@@ -278,19 +274,19 @@ public class Main {
                     choice = Integer.parseInt(reader.readLine());
                     switch (choice) {
                         case 1:
-                            System.out.print(propertiesProvider.getApplicationProperties().getProperty("Enter_new_name"));
+                            System.out.println(propertiesProvider.getApplicationProperties().getProperty("Enter_new_name"));
                             seller.name = reader.readLine();
                             service.updateSeller(seller);
                             logger.info("Seller with ID = " + seller.id + " was updated.");
                             break;
                         case 2:
-                            System.out.print(propertiesProvider.getApplicationProperties().getProperty("Enter_new_money_amount"));
+                            System.out.println(propertiesProvider.getApplicationProperties().getProperty("Enter_new_money_amount"));
                             seller.accountBalance = Double.parseDouble(reader.readLine());
                             service.updateSeller(seller);
                             logger.info("Seller with ID = " + seller.id + " was updated.");
                             break;
                         case 3:
-                            System.out.print(propertiesProvider.getApplicationProperties().getProperty("Enter_new_commission_percentage"));
+                            System.out.println(propertiesProvider.getApplicationProperties().getProperty("Enter_new_commission_percentage"));
                             seller.commissionPercentage = Double.parseDouble(reader.readLine());
                             service.updateSeller(seller);
                             logger.info("Seller with ID = " + seller.id + " was updated.");
@@ -302,12 +298,10 @@ public class Main {
                     }
                 } while (choice != 4);
 
-                mapper.writeValue(new FileOutputStream(filePath), seller);
-                logger.info("File with seller ID = " + seller.id + " was rewrote.");
                 break;
             case 4:
-                LotValueObject lot = mapper.readValue(new FileInputStream(filePath), LotValueObject.class);
-                System.out.println(lot);
+                LotValueObject lot = service.getLotRepository().find(id);
+                System.out.println(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(lot));
 
                 do {
                     System.out.println(propertiesProvider.getApplicationProperties().getProperty("Edit_end_date"));
@@ -316,14 +310,14 @@ public class Main {
                     choice = Integer.parseInt(reader.readLine());
                     switch (choice) {
                         case 1:
-                            System.out.print(propertiesProvider.getApplicationProperties().getProperty("Enter_new_end_date"));
+                            System.out.println(propertiesProvider.getApplicationProperties().getProperty("Enter_new_end_date"));
                             String newEndDate = reader.readLine();
                             lot.endDate = service.getDateFormat().parse(newEndDate);
                             service.updateLot(lot);
                             logger.info("Lot with ID = " + lot.id + " was updated.");
                             break;
                         case 2:
-                            System.out.print(propertiesProvider.getApplicationProperties().getProperty("Enter_new_product_id"));
+                            System.out.println(propertiesProvider.getApplicationProperties().getProperty("Enter_new_product_id"));
                             lot.productId = Long.parseLong(reader.readLine());
                             service.updateLot(lot);
                             logger.info("Lot with ID = " + lot.id + " was updated.");
@@ -335,12 +329,10 @@ public class Main {
                     }
                 } while(choice != 3);
 
-                mapper.writeValue(new FileOutputStream(filePath), lot);
-                logger.info("File with lot ID = " + lot.id + " was rewrote.");
                 break;
             case 5:
-                BidValueObject bid = mapper.readValue(new FileInputStream(filePath), BidValueObject.class);
-                System.out.println(bid);
+                BidValueObject bid = service.getBidRepository().find(id);
+                System.out.println(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(bid));
 
                 do{
                     System.out.println(propertiesProvider.getApplicationProperties().getProperty("Edit_bid_amount"));
@@ -348,7 +340,7 @@ public class Main {
                     choice = Integer.parseInt(reader.readLine());
                     switch(choice){
                         case 1:
-                            System.out.print(propertiesProvider.getApplicationProperties().getProperty("Enter_new_bid_amount"));
+                            System.out.println(propertiesProvider.getApplicationProperties().getProperty("Enter_new_bid_amount"));
                             bid.amount = Double.parseDouble(reader.readLine());
                             service.updateBid(bid);
                             logger.info("Bid with ID = " + bid.id + " was updated.");
@@ -360,8 +352,6 @@ public class Main {
                     }
                 } while (choice != 2);
 
-                mapper.writeValue(new FileOutputStream(filePath), bid);
-                logger.info("File with bid ID = " + bid.id + " was rewrote.");
                 break;
             case 6:
                 break;

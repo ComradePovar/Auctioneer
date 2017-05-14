@@ -41,7 +41,7 @@ public class DatabaseLotRepository extends DatabaseRepository<LotValueObject>
             String values = "productID = " + object.productId +
                     ", end_date = " + object.endDate +
                     ", current_price = " + object.currentPrice;
-            String condition = object.id.toString();
+            String condition = "id = " + object.id;
             String query = getUpdateQuery(tableName, values, condition);
             modify(query);
         } catch (SQLException ex){

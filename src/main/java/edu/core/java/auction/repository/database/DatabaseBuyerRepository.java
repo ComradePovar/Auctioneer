@@ -41,7 +41,7 @@ public class DatabaseBuyerRepository extends DatabaseRepository<BuyerValueObject
         try{
             String values = "name = '" + object.name +
                     "', account_balance = " + object.accountBalance;
-            String condition = object.id.toString();
+            String condition = "id = " + object.id;
             String query = getUpdateQuery(tableName, values, condition);
             modify(query);
         } catch (SQLException ex){

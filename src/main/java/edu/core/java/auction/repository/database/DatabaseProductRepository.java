@@ -39,9 +39,9 @@ public class DatabaseProductRepository extends DatabaseRepository<ProductValueOb
     public void update(ProductValueObject object) {
         try{
             String values = "title = '" + object.title +
-                    "', description = " + object.description +
-                    ", ownerID = " + object.ownerId;
-            String condition = object.id.toString();
+                    "', description = '" + object.description +
+                    "', ownerID = " + object.ownerId;
+            String condition = "id = " + object.id;
             String query = getUpdateQuery(tableName, values, condition);
             modify(query);
         } catch (SQLException ex){
