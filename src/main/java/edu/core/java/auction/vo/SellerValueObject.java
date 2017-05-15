@@ -22,4 +22,29 @@ public class SellerValueObject extends ValueObject {
     public String toString(){
         return "ID: " + id + "\nName: " + name + "\nAccount balance: " + accountBalance + "\nCommission percentage: " + commissionPercentage;
     }
+
+    public double getAccountBalance() {
+        return accountBalance;
+    }
+
+    public void setAccountBalance(double accountBalance) {
+        this.accountBalance = accountBalance;
+    }
+
+    public double getCommissionPercentage() {
+        return commissionPercentage;
+    }
+
+    public void setCommissionPercentage(double commissionPercentage) {
+        this.commissionPercentage = commissionPercentage;
+    }
+
+    public String getName() {
+
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

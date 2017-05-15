@@ -1,11 +1,14 @@
 package edu.core.java.auction.repository.database;
 
+import edu.core.java.auction.AuctionService;
 import edu.core.java.auction.repository.ProductRepository;
 import edu.core.java.auction.vo.ProductValueObject;
 import edu.core.java.auction.vo.SellerValueObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Collection;
@@ -16,7 +19,12 @@ import java.util.HashMap;
  */
 public class DatabaseProductRepository extends DatabaseRepository<ProductValueObject>
                                        implements ProductRepository{
-    protected String tableName = "products";
+    private String selectAllQuery = "SELECT * FROM products";
+    private String selectByIdQuery = "SELECT * FROM products WHERE id = ?";
+    private String updateByIdQuery = "UPDATE products SET title = ?, description = ?, ownerId = ? WHERE id = ?";
+    private String deleteByIdQuery = "DELETE FROM products WHERE id = ?";
+    private String insertQuery = "INSERT INTO products (id, title, description, ownerId) VALUES " +
+            " (?, ?, ?, ?)";
     private Logger logger = LoggerFactory.getLogger(DatabaseProductRepository.class);
 
     @Override
@@ -27,9 +35,14 @@ public class DatabaseProductRepository extends DatabaseRepository<ProductValueOb
     @Override
     public void add(ProductValueObject object) {
         try{
-            String values = object.id + ",'" + object.title + "', '" + object.description + "', " + object.ownerId;
-            String query = getInsertQuery(tableName + "(id, title, description, ownerID)", values);
-            modify(query);
+            Connection connection = AuctionService.getInstance().getDataSource().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(insertQuery);
+            preparedStatement.setLong(1, object.getId());
+            preparedStatement.setString(2, object.getTitle());
+            preparedStatement.setString(3, object.getDescription());
+            preparedStatement.setLong(4, object.getOwnerId());
+            preparedStatement.executeUpdate();
+            connection.close();
         } catch (SQLException ex){
             logger.error(ex.getMessage());
         }
@@ -38,12 +51,14 @@ public class DatabaseProductRepository extends DatabaseRepository<ProductValueOb
     @Override
     public void update(ProductValueObject object) {
         try{
-            String values = "title = '" + object.title +
-                    "', description = '" + object.description +
-                    "', ownerID = " + object.ownerId;
-            String condition = "id = " + object.id;
-            String query = getUpdateQuery(tableName, values, condition);
-            modify(query);
+            Connection connection = AuctionService.getInstance().getDataSource().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(updateByIdQuery);
+            preparedStatement.setString(1, object.getTitle());
+            preparedStatement.setString(2, object.getDescription());
+            preparedStatement.setLong(3, object.getOwnerId());
+            preparedStatement.setLong(4, object.getId());
+            preparedStatement.executeUpdate();
+            connection.close();
         } catch (SQLException ex){
             logger.error(ex.getMessage());
         }
@@ -52,11 +67,13 @@ public class DatabaseProductRepository extends DatabaseRepository<ProductValueOb
     @Override
     public ProductValueObject find(Long id) {
         try{
-            ProductValueObject result;
-            String condition = "id = " + id;
-            String query = getSelectQuery(tableName, condition);
-            HashMap<Long, ProductValueObject> results = select(query);
-            return results.get(id);
+            Connection connection = AuctionService.getInstance().getDataSource().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(selectByIdQuery);
+            preparedStatement.setLong(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            HashMap<Long, ProductValueObject> set = getValues(resultSet);
+            connection.close();
+            return set.get(id);
         } catch (SQLException ex){
             logger.error(ex.getMessage());
         }
@@ -66,9 +83,11 @@ public class DatabaseProductRepository extends DatabaseRepository<ProductValueOb
     @Override
     public void delete(Long id) {
         try{
-            String condition = "id = " + id;
-            String query = getDeleteQuery(tableName, condition);
-            modify(query);
+            Connection connection = AuctionService.getInstance().getDataSource().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(deleteByIdQuery);
+            preparedStatement.setLong(1, id);
+            preparedStatement.executeUpdate();
+            connection.close();
         } catch (SQLException ex){
             logger.error(ex.getMessage());
         }
@@ -77,9 +96,12 @@ public class DatabaseProductRepository extends DatabaseRepository<ProductValueOb
     @Override
     public Collection<ProductValueObject> getAll() {
         try {
-            String query = getSelectAllQuery(tableName);
-            HashMap<Long, ProductValueObject> results = select(query);
-            return results.values();
+            Connection connection = AuctionService.getInstance().getDataSource().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(selectAllQuery);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            HashMap<Long, ProductValueObject> set = getValues(resultSet);
+            connection.close();
+            return set.values();
         } catch (SQLException ex){
             logger.error(ex.getMessage());
         }

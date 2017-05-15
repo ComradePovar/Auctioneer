@@ -11,6 +11,23 @@ public class BuyerValueObject extends ValueObject{
     public BuyerValueObject() {
     }
 
+    public double getAccountBalance() {
+        return accountBalance;
+    }
+
+    public void setAccountBalance(double accountBalance) {
+        this.accountBalance = accountBalance;
+    }
+
+    public String getName() {
+
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public BuyerValueObject(Long id, String name, double accountBalance){
         this.id = id;
         this.name = name;

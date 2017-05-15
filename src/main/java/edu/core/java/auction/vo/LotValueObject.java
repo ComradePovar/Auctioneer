@@ -26,4 +26,29 @@ public class LotValueObject extends ValueObject {
         return "ID: " + id + "\nCurrent price: " + currentPrice +
                 "\nEnd date: " + endDate + "\nProduct ID: " + productId;
     }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
+
+    public Long getProductId() {
+        return productId;
+    }
+
+    public void setProductId(Long productId) {
+        this.productId = productId;
+    }
+
+    public double getCurrentPrice() {
+
+        return currentPrice;
+    }
+
+    public void setCurrentPrice(double currentPrice) {
+        this.currentPrice = currentPrice;
+    }
 }

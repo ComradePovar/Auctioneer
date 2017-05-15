@@ -8,6 +8,30 @@ public class BidValueObject extends ValueObject {
     public Long lotId;
     public double amount;
 
+    public Long getBuyerId() {
+        return buyerId;
+    }
+
+    public void setBuyerId(Long buyerId) {
+        this.buyerId = buyerId;
+    }
+
+    public Long getLotId() {
+        return lotId;
+    }
+
+    public void setLotId(Long lotId) {
+        this.lotId = lotId;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
     public BidValueObject() {
     }
 

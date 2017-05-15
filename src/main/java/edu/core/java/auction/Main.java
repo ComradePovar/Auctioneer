@@ -19,6 +19,7 @@ public class Main {
 
     public static void main(String[] args) {
         logger.info("Application has started.");
+        service.getDataSource();
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         while (true){
             System.out.println("----------------------------------------------------");

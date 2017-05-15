@@ -1,13 +1,14 @@
 package edu.core.java.auction.repository.database;
 
+import edu.core.java.auction.AuctionService;
 import edu.core.java.auction.repository.LotRepository;
 import edu.core.java.auction.vo.LotValueObject;
 import edu.core.java.auction.vo.ProductValueObject;
+import edu.core.java.auction.vo.SellerValueObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.Collection;
 import java.util.HashMap;
 
@@ -16,7 +17,12 @@ import java.util.HashMap;
  */
 public class DatabaseLotRepository extends DatabaseRepository<LotValueObject>
                                    implements LotRepository{
-    protected String tableName = "lots";
+    private String selectAllQuery = "SELECT * FROM lots";
+    private String selectByIdQuery = "SELECT * FROM lots WHERE id = ?";
+    private String updateByIdQuery = "UPDATE lots SET productId = ?, end_date = ?, current_price = ? WHERE id = ?";
+    private String deleteByIdQuery = "DELETE FROM lots WHERE id = ?";
+    private String insertQuery = "INSERT INTO lots (id, productID, end_date, current_price) VALUES " +
+            " (?, ?, ?, ?)";
     private Logger logger = LoggerFactory.getLogger(DatabaseLotRepository.class);
 
     @Override
@@ -27,9 +33,14 @@ public class DatabaseLotRepository extends DatabaseRepository<LotValueObject>
     @Override
     public void add(LotValueObject object) {
         try{
-            String values = object.id + ", " + object.productId + ", '" + object.endDate + "', " + object.currentPrice;
-            String query = getInsertQuery(tableName + "(id, productID, end_date, current_price)", values);
-            modify(query);
+            Connection connection = AuctionService.getInstance().getDataSource().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(insertQuery);
+            preparedStatement.setLong(1, object.getId());
+            preparedStatement.setLong(2, object.getProductId());
+            preparedStatement.setDate(3, new Date(object.getEndDate().getTime()));
+            preparedStatement.setDouble(4, object.getCurrentPrice());
+            preparedStatement.executeUpdate();
+            connection.close();
         } catch (SQLException ex){
             logger.error(ex.getMessage());
         }
@@ -38,12 +49,14 @@ public class DatabaseLotRepository extends DatabaseRepository<LotValueObject>
     @Override
     public void update(LotValueObject object) {
         try{
-            String values = "productID = " + object.productId +
-                    ", end_date = " + object.endDate +
-                    ", current_price = " + object.currentPrice;
-            String condition = "id = " + object.id;
-            String query = getUpdateQuery(tableName, values, condition);
-            modify(query);
+            Connection connection = AuctionService.getInstance().getDataSource().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(updateByIdQuery);
+            preparedStatement.setLong(1, object.getProductId());
+            preparedStatement.setDate(2, new Date(object.getEndDate().getTime()));
+            preparedStatement.setDouble(3, object.getCurrentPrice());
+            preparedStatement.setLong(4, object.getId());
+            preparedStatement.executeUpdate();
+            connection.close();
         } catch (SQLException ex){
             logger.error(ex.getMessage());
         }
@@ -52,11 +65,13 @@ public class DatabaseLotRepository extends DatabaseRepository<LotValueObject>
     @Override
     public LotValueObject find(Long id) {
         try{
-            LotValueObject result;
-            String condition = "id = " + id;
-            String query = getSelectQuery(tableName, condition);
-            HashMap<Long, LotValueObject> results = select(query);
-            return results.get(id);
+            Connection connection = AuctionService.getInstance().getDataSource().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(selectByIdQuery);
+            preparedStatement.setLong(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            HashMap<Long, LotValueObject> set = getValues(resultSet);
+            connection.close();
+            return set.get(id);
         } catch (SQLException ex){
             logger.error(ex.getMessage());
         }
@@ -66,9 +81,11 @@ public class DatabaseLotRepository extends DatabaseRepository<LotValueObject>
     @Override
     public void delete(Long id) {
         try{
-            String condition = "id = " + id;
-            String query = getDeleteQuery(tableName, condition);
-            modify(query);
+            Connection connection = AuctionService.getInstance().getDataSource().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(deleteByIdQuery);
+            preparedStatement.setLong(1, id);
+            preparedStatement.executeUpdate();
+            connection.close();
         } catch (SQLException ex){
             logger.error(ex.getMessage());
         }
@@ -77,9 +94,12 @@ public class DatabaseLotRepository extends DatabaseRepository<LotValueObject>
     @Override
     public Collection<LotValueObject> getAll() {
         try {
-            String query = getSelectAllQuery(tableName);
-            HashMap<Long, LotValueObject> results = select(query);
-            return results.values();
+            Connection connection = AuctionService.getInstance().getDataSource().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(selectAllQuery);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            HashMap<Long, LotValueObject> set = getValues(resultSet);
+            connection.close();
+            return set.values();
         } catch (SQLException ex){
             logger.error(ex.getMessage());
         }

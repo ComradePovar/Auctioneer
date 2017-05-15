@@ -1,11 +1,16 @@
 package edu.core.java.auction.repository.database;
 
+import edu.core.java.auction.AuctionService;
 import edu.core.java.auction.repository.BidRepository;
 import edu.core.java.auction.vo.BidValueObject;
 import edu.core.java.auction.vo.LotValueObject;
+import edu.core.java.auction.vo.ProductValueObject;
+import edu.core.java.auction.vo.SellerValueObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Collection;
@@ -16,7 +21,12 @@ import java.util.HashMap;
  */
 public class DatabaseBidRepository extends DatabaseRepository<BidValueObject>
                                    implements BidRepository{
-    protected String tableName = "bids";
+    private String selectAllQuery = "SELECT * FROM bids";
+    private String selectByIdQuery = "SELECT * FROM bids WHERE id = ?";
+    private String updateByIdQuery = "UPDATE bids SET lotID = ?, buyerID = ?, amount = ? WHERE id = ?";
+    private String deleteByIdQuery = "DELETE FROM bids WHERE id = ?";
+    private String insertQuery = "INSERT INTO bids (id, lotID, buyerID, amount) VALUES " +
+            " (?, ?, ?, ?)";
     private Logger logger = LoggerFactory.getLogger(DatabaseBidRepository.class);
 
     @Override
@@ -27,9 +37,14 @@ public class DatabaseBidRepository extends DatabaseRepository<BidValueObject>
     @Override
     public void add(BidValueObject object) {
         try{
-            String values = object.id + ", " + object.lotId + ", " + object.buyerId + ", " + object.amount;
-            String query = getInsertQuery(tableName + "(id, lotID, buyerID, amount)", values);
-            modify(query);
+            Connection connection = AuctionService.getInstance().getDataSource().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(insertQuery);
+            preparedStatement.setLong(1, object.getId());
+            preparedStatement.setLong(2, object.getLotId());
+            preparedStatement.setLong(3, object.getBuyerId());
+            preparedStatement.setDouble(4, object.getAmount());
+            preparedStatement.executeUpdate();
+            connection.close();
         } catch (SQLException ex){
             logger.error(ex.getMessage());
         }
@@ -38,12 +53,14 @@ public class DatabaseBidRepository extends DatabaseRepository<BidValueObject>
     @Override
     public void update(BidValueObject object) {
         try{
-            String values = "lotID = " + object.lotId +
-                    ", buyerID = " + object.buyerId +
-                    ", amount = " + object.amount;
-            String condition = "id = " + object.id;
-            String query = getUpdateQuery(tableName, values, condition);
-            modify(query);
+            Connection connection = AuctionService.getInstance().getDataSource().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(updateByIdQuery);
+            preparedStatement.setLong(1, object.getLotId());
+            preparedStatement.setLong(2, object.getBuyerId());
+            preparedStatement.setDouble(3, object.getAmount());
+            preparedStatement.setLong(4, object.getId());
+            preparedStatement.executeUpdate();
+            connection.close();
         } catch (SQLException ex){
             logger.error(ex.getMessage());
         }
@@ -52,10 +69,13 @@ public class DatabaseBidRepository extends DatabaseRepository<BidValueObject>
     @Override
     public BidValueObject find(Long id) {
         try{
-            String condition = "id = " + id;
-            String query = getSelectQuery(tableName, condition);
-            HashMap<Long, BidValueObject> results = select(query);
-            return results.get(id);
+            Connection connection = AuctionService.getInstance().getDataSource().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(selectByIdQuery);
+            preparedStatement.setLong(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            HashMap<Long, BidValueObject> set = getValues(resultSet);
+            connection.close();
+            return set.get(id);
         } catch (SQLException ex){
             logger.error(ex.getMessage());
         }
@@ -65,9 +85,11 @@ public class DatabaseBidRepository extends DatabaseRepository<BidValueObject>
     @Override
     public void delete(Long id) {
         try{
-            String condition = "id = " + id;
-            String query = getDeleteQuery(tableName, condition);
-            modify(query);
+            Connection connection = AuctionService.getInstance().getDataSource().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(deleteByIdQuery);
+            preparedStatement.setLong(1, id);
+            preparedStatement.executeUpdate();
+            connection.close();
         } catch (SQLException ex){
             logger.error(ex.getMessage());
         }
@@ -76,9 +98,12 @@ public class DatabaseBidRepository extends DatabaseRepository<BidValueObject>
     @Override
     public Collection<BidValueObject> getAll() {
         try {
-            String query = getSelectAllQuery(tableName);
-            HashMap<Long, BidValueObject> results = select(query);
-            return results.values();
+            Connection connection = AuctionService.getInstance().getDataSource().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(selectAllQuery);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            HashMap<Long, BidValueObject> set = getValues(resultSet);
+            connection.close();
+            return set.values();
         } catch (SQLException ex){
             logger.error(ex.getMessage());
         }

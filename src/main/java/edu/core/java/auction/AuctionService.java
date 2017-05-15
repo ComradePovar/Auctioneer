@@ -93,7 +93,7 @@ public class AuctionService {
 
     private AuctionService(){
         String repType = PropertiesProvider.getInstance().getApplicationProperties().getProperty("Repository_type");
-        if (repType.equals("Database")){
+        if (!repType.equals("Database")){
             bidRepository = new CollectionBidRepository();
             lotRepository = new CollectionLotRepository();
             buyerRepository = new CollectionBuyerRepository();
